@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт DS2</title>
+</head>
+<body>
+    <h1>Привет, мир! 3️⃣🚀 Бу-га-га!</h1>
+    <div id="customAlert" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #fff; padding: 20px; border: 1px solid #ccc; z-index: 1000;">
+        <p id="alertMessage"></p>
+        <button onclick="document.getElementById('customAlert').style.display = 'none'">OK</button>
+    </div>
+
+    <script>
+        function showMessage(from, text) {
+            const alertDiv = document.getElementById('customAlert');
+            document.getElementById('alertMessage').textContent = from + ': ' + text;
+            alertDiv.style.display = 'block';
+        }
+
+        // Первое сообщение
+        showMessage('Аня', 'Привет!');
+
+        // Второе сообщение через 3 секунды (3000 мс)
+        setTimeout(() => {
+           showMessage('Аня', 'Как дела?');
+        }, 3000);
+    </script>
+</body>
+</html>

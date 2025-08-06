@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт DS3</title>
+</head>
+<body>
+    <h1>Привет, мир! 3️⃣🚀 Бу-га-га!</h1>
+    <div id="customAlert" style="display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #fff; padding: 20px; border: 1px solid #ccc; z-index: 1000;">
+        <p id="alertMessage"></p>
+        <button onclick="document.getElementById('customAlert').style.display = 'none'">OK</button>
+    </div>
+
+    <script>
+      const messagesQueue = [];
+      let isAlertShowing = false;
+
+      function showNextMessage() {
+          if (messagesQueue.length === 0 || isAlertShowing) return;
+        
+          isAlertShowing = true;
+          const { from, text } = messagesQueue.shift();
+          const alertDiv = document.getElementById('customAlert');
+          document.getElementById('alertMessage').textContent = from + ': ' + text;
+          alertDiv.style.display = 'block';
+      }
+
+      function addMessageToQueue(from, text) {
+          messagesQueue.push({ from, text });
+          showNextMessage();
+      }
+
+      // Закрытие алерта
+      document.querySelector('#customAlert button').addEventListener('click', () => {
+          document.getElementById('customAlert').style.display = 'none';
+          isAlertShowing = false;
+          showNextMessage(); // Показать следующее сообщение
+      });
+
+      // Добавляем сообщения в очередь
+      addMessageToQueue('Аня', 'Привет!');
+      addMessageToQueue('Аня', 'Как дела?');
+    </script></body>
+</body>
+</html>
